@@ -1,3 +1,6 @@
 # Guessing game
-## Date: Tue 21 Apr 2020 02:19:51 PM UTC
-## Code line count: 30
+Simple bash game where user tries to guess correct number of files in working directory
+## Date:
+README was created using makefile on - Tue 21 Apr 2020 02:47:27 PM UTC
+## Code line count:
+guessinggame.sh holds 30 lines of code
