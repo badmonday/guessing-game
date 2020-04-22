@@ -9,12 +9,16 @@ function get_filecount {
 guess=
 file_count=$( get_filecount )
 
+echo 'Guess correct number of files in current directory.'
+echo 'Include only regular files in your guess and dont forget about hidden ones.'
+echo ''
+
 while [[ $guess -ne $file_count ]]; do
-  echo -n 'Guess correct file count in working directory: '
+  echo -n 'Your guess: '
   read guess
 
   if [[ ! $guess =~ ^[0-9]+$ ]]; then
-    echo 'Please provide numeric input for your guess'
+    echo 'Please provide numeric input for your guess.'
     unset guess
   elif [[ $guess -lt $file_count ]]; then
     echo 'Your guess is too low. Try again.'
