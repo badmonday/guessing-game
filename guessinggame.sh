@@ -7,7 +7,7 @@ function get_filecount {
 }
 
 function strip_leading_zeroes {
-  local stripped=$( $1 | egrep -o '^[1-9][0-9]*')
+  local stripped=$( echo $1 |  egrep -o '[1-9][0-9]*|.$' )
   echo $stripped
 }
 
@@ -23,14 +23,23 @@ while [[ $guess -ne $file_count ]]; do
   read guess
 
   if [[ ! $guess =~ ^[0-9]+$ ]]; then
-    echo 'Please provide numeric input for your guess.'
+    echo 'Please provide natural number or zero for your guess.'
     unset guess
-  elif [[ $guess -lt $file_count ]]; then
-    echo 'Your guess is too low. Try again.'
-  elif [[ $guess -gt $file_count ]]; then
-    echo 'Your guess it too high. Try again.'
   else
-    echo 'Congratulations, you guessed right!!!'
+
+    if [[ $guess =~ ^0[0-9]+ ]]; then
+      guess=$( strip_leading_zeroes $guess )
+      echo "Your input converted to - $guess"
+    fi
+
+    if [[ $guess -lt $file_count ]]; then
+      echo 'Your guess is too low. Try again.'
+    elif [[ $guess -gt $file_count ]]; then
+      echo 'Your guess it too high. Try again.'
+    else
+      echo 'Congratulations, you guessed right!!!'
+    fi
+
   fi
 
   echo ''
