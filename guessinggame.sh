@@ -6,6 +6,11 @@ function get_filecount {
   echo $file_count
 }
 
+function strip_leading_zeroes {
+  local stripped=$( $1 | egrep -o '^[1-9][0-9]*')
+  echo $stripped
+}
+
 guess=
 file_count=$( get_filecount )
 
