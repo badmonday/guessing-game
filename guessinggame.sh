@@ -2,7 +2,7 @@
 # File: guessinggame.sh
 
 function get_filecount {
-  local file_count=$( ls -1FA | egrep '*[^/]$' | wc -l )
+  local file_count=$( ls -lA | egrep '^-' | wc -l )
   echo $file_count
 }
 
