@@ -18,7 +18,7 @@ echo 'Guess correct number of files in current directory.'
 echo 'Include only regular files in your guess and dont forget about hidden ones.'
 echo ''
 
-while [[ $guess -ne $file_count ]]; do
+while [[ -z $guess || $guess -ne $file_count ]]; do
   echo -n 'Your guess: '
   read guess
 
